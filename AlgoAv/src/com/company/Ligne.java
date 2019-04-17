@@ -32,6 +32,26 @@ public class Ligne {
 
         }
     }
+    public double dist(Point point){
+        double T[] = new double[2];
+        T=this.Equation_Droite();
+        double xP=point.getx();
+        double yP=point.gety();
+        double distance=Math.abs(T[0]*xP-yP+T[1])/Math.sqrt(Math.pow(T[0],2)+1);
+        System.out.println("La distance est : "+distance);
+        return distance;
 
+    }
+    public static void main(String[] args) {
+
+        Point p1 = new Point (0,8);
+        Point p2 = new Point (-1,8);
+        Point p3 = new Point (0,0);
+
+        Ligne L1=new Ligne(p1,p2);
+        L1.Equation_Droite();
+        double d=L1.dist(p3);
+
+    }
 
 }
