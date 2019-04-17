@@ -52,6 +52,46 @@ public class Visu extends JFrame {
         f.setLocation(200,200);
         f.setVisible(true);
     }
+  /*  distance(entrée,i,j) :
+    somme = 0
+            for x in range (i+1, j) :
+    somme + = distanceSegmentPoint (entrée[x],entrée[j], entrée[j])
+    fin for
+            return somme
+
+    distanceSegmentPoint(point, i, j) :
+    ortho = projeté(point, i, j)
+    si (abscisse(ortho) > abscisse(i) et abscisse(ortho) < abscisse(j)) :
+            return distance(point, ortho)
+	return min (distance(point,i), distance(point,j))*/
+
+   /* public float Approximation(int n , float C){
+        float sde = 0;
+        float T[] = new float[n];
+        T[1]=0;
+        for (int i=2 ;i<=n;i++){
+            T[i]=999999;
+            for (int j=1; j<=i-1){
+                sde=0;
+                for (int k=j;k<=i;k++){
+                    sde=sde+Distance(j,i);
+
+                }
+                T[i]=Math.min(T[i],sde+C+T[j]);
+
+            }
+        }
+        return(T[n]);
+
+    }*/
+   /* public float Distance(Point point,Point i,Point j){
+        Point ortho=projete(point,i,j);
+        if (ortho.getx()>i.getx() && ortho.getx()<j.getx()){
+            return d
+            somme=somme + distanceSec
+        }
+
+    }*/
 
     public static void main(String[] args) {
 
