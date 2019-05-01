@@ -9,7 +9,7 @@ import java.util.Set;
 public class Optimale {
 	List<Point> points;
 	int size;
-	static double Cout = 1.5;
+	static double Cout = 2;
 	static double O = Double.POSITIVE_INFINITY;
 	
 	public Optimale(){
@@ -20,9 +20,16 @@ public class Optimale {
 	public Optimale(int n){
 		
 		points = new ArrayList<>();
-		for(int i=1; i<=n; i++)
-			points.add(new Point(i, (i*9)%n));
+		double min=1;
+		double max=n;
+
+	    for(int i=1; i<=8; i++) {
+			double x = (int) (Math.random() * ((max - min) + 1)) + min;
+
+			points.add(new Point(i,x));
+		}
 		size = n;
+
 	}
 	
 	public double distance(int i, int j){
@@ -34,7 +41,7 @@ public class Optimale {
 		return distance;
 	}
 	
-	public double solution_1(int i, List<Point> p){
+	/*public double solution_1(int i, List<Point> p){
 		double result = Double.POSITIVE_INFINITY;
 		if(i == size-1){
 			result = 0;
@@ -55,7 +62,7 @@ public class Optimale {
 		result = Math.min(result, solution_1(i+1, p));
 		p.remove(p.size()-1);
 		return result;
-	}
+	}*/
 	
 	public void solution_2(int i, int last, double somme){
 		
@@ -125,7 +132,7 @@ public class Optimale {
 	}
 	
 	public static void main(String args[]) {
-		int n = 30;
+		int n =8;
 		Optimale p = new Optimale(n);
 		List<Point> l = new ArrayList<>();
 		double value = 0;
@@ -155,6 +162,20 @@ public class Optimale {
 		stopTime = System.currentTimeMillis();
 		System.out.println("Backward sequence " + set.toString());
 		System.out.println("Programmatin dynamique ====> " + T.get(T.size()-1)[1]+ " Time : " + (stopTime - startTime) + " ms");
+		Set <Ligne> lignes = new HashSet<Ligne>();
+		Set<Point> setP = new HashSet<Point>(p.points);
+
+		Set<Point> setF = new HashSet<Point>(set);
+		int i=0;
+		System.out.println(set.size());
+		while (i<set.size()-1){
+		 lignes.add(new Ligne (set.get(i),set.get(i+1)));
+		 i++;
+
+
+		}
+		Visu v1 = new Visu(setP,lignes,"Solution de score "+T.get(T.size()-1)[1]);
+
 	}
 
 }

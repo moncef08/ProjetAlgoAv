@@ -1,4 +1,7 @@
 package com.company;
+
+import java.util.ArrayList;
+
 public class Ligne {
     private Point point1;
     private Point point2;
@@ -37,7 +40,6 @@ public class Ligne {
         T = this.Equation_Droite();
         double xP=point.getx();
         double yP=point.gety(); 
-        // Coquille.
         double distance=0;
         if(T[1] == Double.POSITIVE_INFINITY)
         	distance = Math.abs(T[0] - xP);
@@ -49,13 +51,24 @@ public class Ligne {
     }
     public static void main(String[] args) {
 
-        Point p1 = new Point (1,7);
-        Point p2 = new Point (1,8);
-        Point p3 = new Point (0,0);
+        Point p1=new Point(1,1);
+        Point p2=new Point(2,1);
+        Point p3=new Point(3,3);
+        Point p4=new Point(4,5);
+        Point p5= new Point(5,3);
+        Point p6=new Point(6,4);
+        Point p7=new Point(7,3);
+        Point p8= new Point(8,4);
 
-        Ligne L1 = new Ligne(p1,p2);
+        Ligne L1 = new Ligne(p1,p4);
+        Ligne L2 = new Ligne(p4,p7);
+        Ligne L3 = new Ligne(p7,p8);
+
+        //double somme=L2.dist(p3)+L2.dist(p4)+L2.dist(p5)+L2.dist(p6)+L2.dist(p7) + 3*2;
+        double somme1=L1.dist(p2)+L1.dist(p3)+L2.dist(p5)+L2.dist(p6);
+
         L1.Equation_Droite();
-        double d = L1.dist(p3);
+        System.out.println("score="+somme1);
 
     }
 
