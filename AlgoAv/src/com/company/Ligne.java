@@ -1,5 +1,4 @@
 package com.company;
-
 public class Ligne {
     private Point point1;
     private Point point2;
@@ -17,15 +16,16 @@ public class Ligne {
         Point A=this.getp1();
         Point B=this.getp2();
 
-        if (A.getx()==B.gety()){
-            System.out.println("l'equation de cette droite est : x= "+A.getx());
+        if (A.getx()==B.getx()){ // Coquille.
+            // System.out.println("L'equation de cette droite est : x = "+A.getx());
             T[0]=A.getx();
+            T[1]=Double.POSITIVE_INFINITY;
             return(T);
         }
         else{
             double coeffDir=((B.gety()-A.gety())/(B.getx()-A.getx()));
             double p=A.gety() - coeffDir * A.getx();
-            System.out.println("l'equation de cette droite est : y= "+coeffDir+"x+"+p);
+            // System.out.println("L'equation de cette droite est : y = "+coeffDir+" x + "+p);
             T[0]=coeffDir;
             T[1]=p;
             return (T);
@@ -34,23 +34,28 @@ public class Ligne {
     }
     public double dist(Point point){
         double T[] = new double[2];
-        T=this.Equation_Droite();
+        T = this.Equation_Droite();
         double xP=point.getx();
-        double yP=point.gety();
-        double distance=Math.abs(T[0]*xP-yP+T[1])/Math.sqrt(Math.pow(T[0],2)+1);
-        System.out.println("La distance est : "+distance);
+        double yP=point.gety(); 
+        // Coquille.
+        double distance=0;
+        if(T[1] == Double.POSITIVE_INFINITY)
+        	distance = Math.abs(T[0] - xP);
+        else 
+        	distance = Math.abs(T[0]*xP-yP+T[1])/Math.sqrt(Math.pow(T[0],2)+1);
+        // System.out.println("La distance est : "+distance);
         return distance;
 
     }
     public static void main(String[] args) {
 
-        Point p1 = new Point (0,8);
-        Point p2 = new Point (-1,8);
+        Point p1 = new Point (1,7);
+        Point p2 = new Point (1,8);
         Point p3 = new Point (0,0);
 
-        Ligne L1=new Ligne(p1,p2);
+        Ligne L1 = new Ligne(p1,p2);
         L1.Equation_Droite();
-        double d=L1.dist(p3);
+        double d = L1.dist(p3);
 
     }
 

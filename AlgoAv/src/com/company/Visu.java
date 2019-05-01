@@ -1,5 +1,4 @@
 package com.company;
-
 import java.awt.*;
 import java.awt.geom.*;
 import java.util.HashSet;
@@ -98,14 +97,14 @@ public class Visu extends JFrame {
         // EXEMPLE d'UTILISATION DE LA CLASSE
 
         // Création des points
-        Point p1 = new Point (1.0,8.6);
-        Point p2 = new Point (2.0,25.8);
-        Point p3 = new Point (3.0,7.9);
-        Point p4 = new Point (4.5,5.0);
-        Point p5 = new Point (5.0,8.6);
-        Point p6 = new Point (6.0,25.8);
-        Point p7 = new Point (7.0,7.9);
-        Point p8 = new Point (8.5,5.0);
+    	Point p1 = new Point (1.0,8);
+        Point p2 = new Point (2.0,25);
+        Point p3 = new Point (3.0,7);
+        Point p4 = new Point (4,5.0);
+        Point p5 = new Point (5.0,8);
+        Point p6 = new Point (6.0,25);
+        Point p7 = new Point (7.0,7);
+        Point p8 = new Point (8,5);
         Set <Point> points = new HashSet<Point>();
         points.add(p1);
         points.add(p2);

@@ -1,10 +1,11 @@
 package com.company;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -25,9 +26,9 @@ public class Parser {
      * Renvoie une liste de points lu dans un fichier
      * @return Liste de points lus dans filePath
      */
-    public static Set <Point> recuperePoints(){
+    public static List<Point> recuperePoints(){
         // Liste de points récupérés
-        Set <Point> points= new HashSet<Point>();
+    	List<Point> points= new ArrayList<>();
 
         JFileChooser dialogue = new JFileChooser(new File("."));
         dialogue.setApproveButtonText("Choisir ce fichier de test");
@@ -73,7 +74,7 @@ public class Parser {
      * @param args
      */
     public static void main(String args[]) {
-        Set <Point> points;
+    	List<Point> points;
 
         try{
             points=recuperePoints();
