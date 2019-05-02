@@ -9,7 +9,7 @@ import java.util.Set;
 public class Optimale {
 	List<Point> points;
 	int size;
-	static double Cout = 2;
+	static double C = 1.5;
 	static double O = Double.POSITIVE_INFINITY;
 	
 	public Optimale(){
@@ -68,7 +68,7 @@ public class Optimale {
 		
 		// Etape finale:
 		if(i == size-1){
-			O = Math.min(O, somme + distance(last, i) + Cout) ;
+			O = Math.min(O, somme + distance(last, i) + C) ;
 			return ;
 		}
 		
@@ -77,7 +77,7 @@ public class Optimale {
 		
 		// Etape 2:
 		double check = 0;
-		check = somme + distance(last, i) + Cout;
+		check = somme + distance(last, i) + C;
 		solution_Essais_successifs(i+1, i, check);
 	
 	}
@@ -86,7 +86,7 @@ public class Optimale {
 		
 		// Etape finale:
 		if(i == size-1){
-			O = Math.min(O, somme + distance(last, i) + Cout) ;
+			O = Math.min(O, somme + distance(last, i) + C) ;
 			return ;
 		}
 		
@@ -95,7 +95,7 @@ public class Optimale {
 		
 		// Etape 2:
 		double check = 0;
-		check = somme + distance(last, i) + Cout;
+		check = somme + distance(last, i) + C;
 		if(check < O)
 			solution_elagage(i+1, i, check);
 	
@@ -110,8 +110,8 @@ public class Optimale {
 			double min = Double.POSITIVE_INFINITY;
 			double last = 0;
 			for(int j=0; j < i; j++){
-				if(min > T.get(j)[1] + distance(j, i) + Cout){
-					min = T.get(j)[1] + distance(j, i) + Cout;
+				if(min > T.get(j)[1] + distance(j, i) + C){
+					min = T.get(j)[1] + distance(j, i) + C;
 					last = j;
 				}
 			}
@@ -132,20 +132,15 @@ public class Optimale {
 	}
 	
 	public static void main(String args[]) {
-		int n =33;						      //on choisit le nombre de points qu'on veut (inutile si on utilise le Deuxieme constructeur
+		int n =32;						      //on choisit le nombre de points qu'on veut (inutile si on utilise le Deuxieme constructeur
 		                                      //qui récupère un fichier de données
 		Optimale p = new Optimale(n);
 		//Optimale p = new Optimale();       // à décommenter si on veut introduire un jeu de test et non générer aléatoirement les pts
 		List<Point> l = new ArrayList<>();
 		double value = 0;
 		System.out.println("n = " + n);
-		// System.out.println("La distance totale : " + p.distance(0,3));
-		/*
-		long startTime = System.currentTimeMillis();
-		value = p.solution_1(0, l);
-		long stopTime = System.currentTimeMillis();
-		System.out.println("La solution optimale 1 ====> " + "Time : " + (stopTime - startTime));
-		*/
+
+
 		long startTime = System.currentTimeMillis();
 		O = Double.POSITIVE_INFINITY;
 		p.solution_Essais_successifs(1, 0, 0);
